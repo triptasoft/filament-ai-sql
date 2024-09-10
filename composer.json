@@ -1,29 +1,28 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "triptasoft/filament-ai-sql",
+    "description": "Package to interact database query using AI",
     "keywords": [
-        ":vendor_name",
+        "triptasoft",
         "laravel",
-        ":package_slug"
+        "filament-ai-sql"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/triptasoft/filament-ai-sql",
     "support": {
-        "issues": "https://github.com/:vendor_slug/:package_slug/issues",
-        "source": "https://github.com/:vendor_slug/:package_slug"
+        "issues": "https://github.com/triptasoft/filament-ai-sql/issues",
+        "source": "https://github.com/triptasoft/filament-ai-sql"
     },
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "triptasoft",
+            "email": "developer@triptasoft.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.1",
         "filament/filament": "^3.0",
-        "filament/forms": "^3.0",
-        "filament/tables": "^3.0",
+        "google-gemini-php/laravel": "^1.0",
         "spatie/laravel-package-tools": "^1.15.0"
     },
     "require-dev": {
@@ -41,13 +40,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Triptasoft\\FilamentAiSql\\": "src/",
+            "Triptasoft\\FilamentAiSql\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/"
+            "Triptasoft\\FilamentAiSql\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -61,16 +60,17 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "php-http/discovery": true
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Triptasoft\\FilamentAiSql\\FilamentAiSqlServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "FilamentAiSql": "Triptasoft\\FilamentAiSql\\Facades\\FilamentAiSql"
             }
         }
     },

@@ -1,19 +1,11 @@
-# :package_description
+# Package to interact database query using AI 
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/triptasoft/filament-ai-sql.svg?style=flat-square)](https://packagist.org/packages/triptasoft/filament-ai-sql)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/triptasoft/filament-ai-sql/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/triptasoft/filament-ai-sql/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/triptasoft/filament-ai-sql/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/triptasoft/filament-ai-sql/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/triptasoft/filament-ai-sql.svg?style=flat-square)](https://packagist.org/packages/triptasoft/filament-ai-sql)
 
-<!--delete-->
----
-This repo can be used to scaffold a Filament plugin. Follow these steps to get started:
 
-1. Press the "Use this template" button at the top of this repo to create a new repo with the contents of this skeleton.
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files.
-3. Make something great!
----
-<!--/delete-->
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
@@ -22,26 +14,26 @@ This is where your description should go. Limit it to a paragraph or two. Consid
 You can install the package via composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
+composer require triptasoft/filament-ai-sql
 ```
 
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-migrations"
+php artisan vendor:publish --tag="filament-ai-sql-migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-config"
+php artisan vendor:publish --tag="filament-ai-sql-config"
 ```
 
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-views"
+php artisan vendor:publish --tag="filament-ai-sql-views"
 ```
 
 This is the contents of the published config file:
@@ -54,8 +46,8 @@ return [
 ## Usage
 
 ```php
-$variable = new VendorName\Skeleton();
-echo $variable->echoPhrase('Hello, VendorName!');
+$filamentAiSql = new Triptasoft\FilamentAiSql();
+echo $filamentAiSql->echoPhrase('Hello, Triptasoft!');
 ```
 
 ## Testing
@@ -78,7 +70,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [triptasoft](https://github.com/triptasoft)
 - [All Contributors](../../contributors)
 
 ## License

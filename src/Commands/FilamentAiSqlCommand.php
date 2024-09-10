@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Triptasoft\FilamentAiSql\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FilamentAiSqlCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'filament-ai-sql';
 
     public $description = 'My command';
 
