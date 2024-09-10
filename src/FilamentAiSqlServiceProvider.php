@@ -103,8 +103,8 @@ class FilamentAiSqlServiceProvider extends PackageServiceProvider
     {
         return [
             // AlpineComponent::make('filament-ai-sql', __DIR__ . '/../resources/dist/components/filament-ai-sql.js'),
-            Css::make('filament-ai-sql-styles', __DIR__ . '/../resources/dist/filament-ai-sql.css'),
-            Js::make('filament-ai-sql-scripts', __DIR__ . '/../resources/dist/filament-ai-sql.js'),
+            // Css::make('filament-ai-sql-styles', __DIR__ . '/../resources/dist/filament-ai-sql.css'),
+            // Js::make('filament-ai-sql-scripts', __DIR__ . '/../resources/dist/filament-ai-sql.js'),
         ];
     }
 
