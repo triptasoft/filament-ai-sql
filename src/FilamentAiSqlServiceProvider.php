@@ -10,12 +10,12 @@ use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Filesystem\Filesystem;
 use Livewire\Features\SupportTesting\Testable;
+use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Triptasoft\FilamentAiSql\Commands\FilamentAiSqlCommand;
 use Triptasoft\FilamentAiSql\Testing\TestsFilamentAiSql;
-use Livewire\Livewire;
 
 class FilamentAiSqlServiceProvider extends PackageServiceProvider
 {

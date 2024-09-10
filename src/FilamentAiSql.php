@@ -1,19 +1,23 @@
 <?php
 
 namespace Triptasoft\FilamentAiSql;
+
 use Filament\Widgets\Widget;
-use Illuminate\Support\Facades\Validator;
 use Gemini\Laravel\Facades\Gemini;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Validator;
 
-class FilamentAiSql extends Widget {
-
+class FilamentAiSql extends Widget
+{
     protected static string $view = 'filament-ai-sql::filament-ai-sql';
 
     public $query = '';
+
     public $response = '';
+
     public $isLoading = false;
+
     public $gemini = '';
 
     public function submit()
@@ -27,6 +31,7 @@ class FilamentAiSql extends Widget {
 
         if ($validator->fails()) {
             $this->response = 'Query is required.';
+
             return;
         }
 
@@ -59,7 +64,7 @@ class FilamentAiSql extends Widget {
         // $this->isLoading = false;
     }
 
-    function getDatabaseSchema()
+    public function getDatabaseSchema()
     {
         $schema = [];
 
