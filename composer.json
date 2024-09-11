@@ -74,6 +74,12 @@
             }
         }
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://filament-ai-sql.composer.sh"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }
