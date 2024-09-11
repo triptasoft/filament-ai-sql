@@ -57,19 +57,19 @@ class FilamentAiSql extends Widget
             $jsonData = json_encode($sql, JSON_PRETTY_PRINT);
             $arrayData = json_decode($jsonData, true);
 
-            $data='';
+            $data = '';
             $totalItems = count($arrayData);
             // Loop through each item
             foreach ($arrayData as $index => $item) {
                 // Loop through each key-value pair
                 foreach ($item as $key => $value) {
                     // Append each formatted line to the response property
-                    $data .= ucfirst(str_replace('_', ' ', $key)) . " : " . $value . '<br>';
+                    $data .= ucfirst(str_replace('_', ' ', $key)) . ' : ' . $value . '<br>';
                 }
                 // Add separator between teams for clarity
 
                 if ($totalItems > 1 && $index < $totalItems - 1) {
-                    $data .= "-------------------------------" . '<br>';
+                    $data .= '-------------------------------' . '<br>';
                 }
             }
 
