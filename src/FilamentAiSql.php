@@ -16,13 +16,13 @@ class FilamentAiSql extends Widget
 
     public $response = '';
 
-    public $isLoading = false;
-
     public $gemini = '';
+
+    public $sql = '';
 
     public function submit()
     {
-        $this->isLoading = true;
+        $this->response = '';
         // Validate the query input
         $validator = Validator::make(
             ['query' => $this->query],
@@ -37,8 +37,6 @@ class FilamentAiSql extends Widget
 
         // Use AskDatabase to execute the query
         try {
-            // $gemini = Gemini::geminiPro()->generateContent($this->query);
-
             $databaseSchema = $this->getDatabaseSchema(); // Implement this method to load your schema structure
             $query = $this->query;
 
@@ -51,17 +49,35 @@ class FilamentAiSql extends Widget
             // Call Gemini to generate the SQL content
             $gemini = Gemini::geminiPro()->generateContent($geminiPrompt);
             $this->gemini = $gemini->text();
-            // $this->response = $gemini->text();
             $query = str_replace(['```sql', '```'], '', $gemini->text());
 
             $sql = DB::select($query);
+            $this->sql = $query;
 
-            $this->response = json_encode($sql, JSON_PRETTY_PRINT);
+            $jsonData = json_encode($sql, JSON_PRETTY_PRINT);
+            $arrayData = json_decode($jsonData, true);
+
+            $data='';
+            $totalItems = count($arrayData);
+            // Loop through each item
+            foreach ($arrayData as $index => $item) {
+                // Loop through each key-value pair
+                foreach ($item as $key => $value) {
+                    // Append each formatted line to the response property
+                    $data .= ucfirst(str_replace('_', ' ', $key)) . " : " . $value . '<br>';
+                }
+                // Add separator between teams for clarity
+
+                if ($totalItems > 1 && $index < $totalItems - 1) {
+                    $data .= "-------------------------------" . '<br>';
+                }
+            }
+
+            $this->response = $data;
+            // $this->response = json_encode($sql, JSON_PRETTY_PRINT);
         } catch (\Exception $e) {
             $this->response = 'Error: ' . $e->getMessage();
         }
-
-        // $this->isLoading = false;
     }
 
     public function getDatabaseSchema()

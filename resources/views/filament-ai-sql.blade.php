@@ -1,5 +1,5 @@
 <x-filament-widgets::widget>
-    <x-filament::section icon="heroicon-m-sparkles">
+    <x-filament::section icon="heroicon-m-sparkles" collapsible>
         <x-slot name="heading">
             AI Assistant
         </x-slot>
@@ -20,23 +20,38 @@
                     </x-filament::input.wrapper>
 
                     <x-filament::button icon="heroicon-m-sparkles" type="submit">
-                        Submit
+                        Ask
                     </x-filament::button>
 
                 </div>
-                
+
             </form>
 
             <x-filament::section>
+                <x-slot name="heading">
+                    <p class="float-left break-words text-xs">Answer</p>
+                </x-slot>
+                <x-slot name="headerEnd">
+                    @if ($sql)
+                    <x-filament::modal icon="heroicon-o-information-circle">
+                        <x-slot name="trigger">
+                            <x-filament::icon-button icon="heroicon-m-code-bracket" size="xs" tooltip="Show SQL" />
+                        </x-slot>
+                        <x-slot name="heading">
+                            Generated SQL
+                        </x-slot>
+                        <p class="break-words text-sm">
+                            {{ $sql }}
+                        </p>
+                    </x-filament::modal>
+                    @endif
+                </x-slot>
                 <div wire:loading wire:target="submit" class="loading-indicator">
                     <x-filament::loading-indicator class="h-5 w-5" />
                 </div>
-                <p>{{ $response }}</p>
-            </x-filament::section>
+                <p class="break-words text-sm">{!! $response !!}</p>
 
-            <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-            {{ $gemini }}
-            </textarea>
+            </x-filament::section>
 
         </div>
 
