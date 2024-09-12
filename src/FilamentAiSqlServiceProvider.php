@@ -40,7 +40,8 @@ class FilamentAiSqlServiceProvider extends PackageServiceProvider
                     ->askToStarRepoOnGitHub('triptasoft/filament-ai-sql');
             });
 
-        $configFileName = $package->shortName();
+        // $configFileName = $package->shortName();
+        $configFileName = 'filament-ai-sql';
 
         if (file_exists($package->basePath("/../config/{$configFileName}.php"))) {
             $package->hasConfigFile();
