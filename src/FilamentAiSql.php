@@ -62,13 +62,14 @@ class FilamentAiSql extends Widget
             foreach ($allowedFunctions as $function) {
                 if (stripos(strtolower($query), $function) !== false) {
                     $containsAllowedFunction = true;
+
                     break;
                 }
             }
 
             // If the query doesn't contain any allowed SQL functions, throw an exception
-            if (!$containsAllowedFunction) {
-                throw new \Exception("The query contains SQL functions that are not allowed. Allowed functions are: " . implode(', ', $allowedFunctions));
+            if (! $containsAllowedFunction) {
+                throw new \Exception('The query contains SQL functions that are not allowed. Allowed functions are: ' . implode(', ', $allowedFunctions));
             }
 
             $sql = DB::select($query);
