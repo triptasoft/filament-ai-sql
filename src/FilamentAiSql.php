@@ -47,12 +47,29 @@ class FilamentAiSql extends Widget
                 . "\n\nOutput the result in SQL format.";
 
             // Call Gemini to generate the SQL content
-            $ApiKey = config('ai-sql.gemini_api_key');
+            $ApiKey = config('filament-ai-sql.gemini_api_key');
             $client = Gemini::client($ApiKey);
 
             $gemini = $client->geminiPro()->generateContent($geminiPrompt);
             $this->gemini = $gemini->text();
             $query = str_replace(['```sql', '```'], '', $gemini->text());
+
+            // Retrieve allowed SQL functions from the config
+            $allowedFunctions = config('filament-ai-sql.allowed_sql_functions', []);
+
+            // Check if the query contains only allowed SQL functions
+            $containsAllowedFunction = false;
+            foreach ($allowedFunctions as $function) {
+                if (stripos(strtolower($query), $function) !== false) {
+                    $containsAllowedFunction = true;
+                    break;
+                }
+            }
+
+            // If the query doesn't contain any allowed SQL functions, throw an exception
+            if (!$containsAllowedFunction) {
+                throw new \Exception("The query contains SQL functions that are not allowed. Allowed functions are: " . implode(', ', $allowedFunctions));
+            }
 
             $sql = DB::select($query);
             $this->sql = $query;

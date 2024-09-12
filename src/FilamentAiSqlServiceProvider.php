@@ -35,13 +35,13 @@ class FilamentAiSqlServiceProvider extends PackageServiceProvider
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
-                    ->publishMigrations()
-                    ->askToRunMigrations()
+                    // ->publishMigrations()
+                    // ->askToRunMigrations()
                     ->askToStarRepoOnGitHub('triptasoft/filament-ai-sql');
             });
 
         // $configFileName = $package->shortName();
-        $configFileName = 'filament-ai-sql';
+        $configFileName = $this->name;
 
         if (file_exists($package->basePath("/../config/{$configFileName}.php"))) {
             $package->hasConfigFile();

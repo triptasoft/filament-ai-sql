@@ -15,17 +15,17 @@ You can install the package via composer:
 composer require triptasoft/filament-ai-sql
 ```
 
+Install package :
+
+```bash
+php artisan filament-ai-sql-config:install
+```
+
 Add GEMINI_API_KEY in your .env:
 Get your API here https://aistudio.google.com/
 
 ```bash
 GEMINI_API_KEY=your_gemini_api_key
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="filament-ai-sql-config"
 ```
 
 ## Usage
