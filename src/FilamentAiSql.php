@@ -3,10 +3,10 @@
 namespace Triptasoft\FilamentAiSql;
 
 use Filament\Widgets\Widget;
+use Gemini;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
-use Gemini;
 
 class FilamentAiSql extends Widget
 {
