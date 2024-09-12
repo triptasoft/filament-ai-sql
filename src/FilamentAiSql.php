@@ -3,10 +3,10 @@
 namespace Triptasoft\FilamentAiSql;
 
 use Filament\Widgets\Widget;
-use Gemini\Laravel\Facades\Gemini;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
+use Gemini;
 
 class FilamentAiSql extends Widget
 {
@@ -47,7 +47,10 @@ class FilamentAiSql extends Widget
                 . "\n\nOutput the result in SQL format.";
 
             // Call Gemini to generate the SQL content
-            $gemini = Gemini::geminiPro()->generateContent($geminiPrompt);
+            $ApiKey = config('ai-sql.gemini_api_key');
+            $client = Gemini::client($ApiKey);
+
+            $gemini = $client->geminiPro()->generateContent($geminiPrompt);
             $this->gemini = $gemini->text();
             $query = str_replace(['```sql', '```'], '', $gemini->text());
 

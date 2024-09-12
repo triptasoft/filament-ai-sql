@@ -6,9 +6,9 @@ use Illuminate\Console\Command;
 
 class FilamentAiSqlCommand extends Command
 {
-    public $signature = 'filament-ai-sql';
+    public $signature = 'filament-ai-sql:install';
 
-    public $description = 'My command';
+    public $description = 'Install';
 
     public function handle(): int
     {
