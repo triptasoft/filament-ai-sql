@@ -7,10 +7,13 @@ use Gemini;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Cache;
 
 class FilamentAiSql extends Widget
 {
     protected static string $view = 'filament-ai-sql::filament-ai-sql';
+
+    protected static ?int $sort = 2;
 
     public $query = '';
 
@@ -37,7 +40,10 @@ class FilamentAiSql extends Widget
 
         // Use AskDatabase to execute the query
         try {
-            $databaseSchema = $this->getDatabaseSchema(); // Implement this method to load your schema structure
+            $databaseSchema = Cache::remember('database_schema', now()->addDay(), function () {
+                return $this->getDatabaseSchema(); // Implement this method to load your schema structure
+            });
+
             $query = $this->query;
 
             // Adjust Gemini prompt to ensure SQL output
@@ -68,7 +74,8 @@ class FilamentAiSql extends Widget
 
             // If the query doesn't contain any allowed SQL functions, throw an exception
             if (!$containsAllowedFunction) {
-                throw new \Exception("The query contains SQL functions that are not allowed. Allowed functions are: " . implode(', ', $allowedFunctions));
+                // throw new \Exception("The query contains SQL functions that are not allowed. Allowed functions are: " . implode(', ', $allowedFunctions));
+                throw new \Exception("Forbidden query detected");
             }
 
             $sql = DB::select($query);

@@ -41,7 +41,7 @@ class FilamentAiSqlServiceProvider extends PackageServiceProvider
             });
 
         // $configFileName = $package->shortName();
-        $configFileName = $this->name;
+        $configFileName = 'filament-ai-sql';
 
         if (file_exists($package->basePath("/../config/{$configFileName}.php"))) {
             $package->hasConfigFile();
