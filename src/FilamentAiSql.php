@@ -68,6 +68,7 @@ class FilamentAiSql extends Widget
             foreach ($allowedFunctions as $function) {
                 if (stripos(strtolower($query), $function) !== false) {
                     $containsAllowedFunction = true;
+
                     break;
                 }
             }
