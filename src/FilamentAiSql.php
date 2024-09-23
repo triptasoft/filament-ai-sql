@@ -4,10 +4,10 @@ namespace Triptasoft\FilamentAiSql;
 
 use Filament\Widgets\Widget;
 use Gemini;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Cache;
 
 class FilamentAiSql extends Widget
 {
@@ -74,9 +74,9 @@ class FilamentAiSql extends Widget
             }
 
             // If the query doesn't contain any allowed SQL functions, throw an exception
-            if (!$containsAllowedFunction) {
+            if (! $containsAllowedFunction) {
                 // throw new \Exception("The query contains SQL functions that are not allowed. Allowed functions are: " . implode(', ', $allowedFunctions));
-                throw new \Exception("Forbidden query detected");
+                throw new \Exception('Forbidden query detected');
             }
 
             $sql = DB::select($query);
